@@ -1,0 +1,163 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+#include <iostream>
+#include <string.h>
+#define size 6
+using namespace std;
+struct pcb {
+    string name;
+    pcb *next;
+    int time_needed;
+    int  priority_number ;
+    char state;/*就绪，用R表示;结束，用E表示*/
+};
+/*根据优先级快速排序*/
+struct sortnode {
+    int low;
+    int high;
+};
+int splitpriority_number(pcb arr[], int low, int high) {
+    int i = low, y;
+    y = arr[low].priority_number;
+    int j;
+    pcb temp[1];
+    for(j = low + 1; j <= high; j++) {
+        if(arr[j].priority_number <= y) {
+            i++;
+            if(i != j) {
+                temp[0] = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp[0];
+            }
+        }
+    }
+    temp[0] = arr[i];
+    arr[i] = arr[low];
+    arr[low] = temp[0];
+    return i;
+}
+void QUICKSORTpriority_number(pcb arr[], int low, int high) {
+    int top = -1;
+    sortnode St[high + 1]; //定义一个数组St[]，作为栈，其中low和high分别指示某个子序列的首位地址
+    top++;//进栈
+    St[top].low = low;
+    St[top].high = high;
+    while(top > -1) {
+        low = St[top].low;
+        high = St[top].high;
+        top--;
+        int w;
+        if(low < high) {//当A[low,high]有一个以上的元素时
+            w = splitpriority_number(arr, low, high);//归位基准元素
+            top++;//将（low,i-1）进栈
+            St[top].low = low;
+            St[top].high = w - 1;
+            top++;//将（i+1,high）进栈
+            St[top].low = w + 1;
+            St[top].high = high;
+        }
+    }
+}
+pcb P[size], *process, *temp, *head;/*head为队列头*/
+int i;
+void initialise() { /*初始化程序*/
+    srand((int)time(0));
+    for(i = 1; i < size; i++) {
+        char buffer [10];
+        sprintf(buffer, "Q%d", i);
+        P[i].name = buffer ;
+        P[i].state = 'R';
+        P[i].next = NULL;
+        P[i].time_needed = (double)rand() / RAND_MAX * 3 + 1;/*运行时间在1-3之间*/
+        P[i].priority_number = (double)rand() / RAND_MAX * 5 + 1;/*优先级在1-5之间*/
+    }
+    QUICKSORTpriority_number(P, 1, 5);/*根据优先级快速排序*/
+    for(i = 5; i > 1; i--)/*建立队列链表队列*/
+        P[i].next = &P[i - 1];
+    head = &P[5];/*队列头指针指向队列头*/
+    for(i = 5; i >= 1; i--) {/*根据优先级打印队列*/
+        std::cout << P[i].name
+                  << "\n"
+                  << "state:"
+                  << P[i].state
+                  << "\n"
+                  << "time_needed:"
+                  << P[i].time_needed
+                  << "\n"
+                  << "next:"
+                  << P[i].next
+                  << "\n"
+                  << "priority_number:"
+                  << P[i].priority_number
+                  << "\n";
+    }
+}
+void run() 
+{
+    while(head != NULL) 
+	{
+        while(head->state == 'R' && head->time_needed > 0) { /*当队列不为空且运行时间不等于0*/
+            std::cout << "head->name:"
+                      << head->name
+                      << "\n"
+                      << "head->state:"
+                      << head->state
+                      << "\n"
+                      << "head->time_needed:"
+                      << head->time_needed
+                      << "\n"
+                      << "head->priority_number:"
+                      << head->priority_number
+                      << "\n";
+            std::cout << std::endl;
+            head->time_needed = head->time_needed - 1; /*进程每运行1次，优先数减1，要求运行时间减1*/
+            head->priority_number = head->priority_number - 1;
+            if(head->time_needed == 0) {/*运行时间等于0，将状态改为"结束"，退出队列*/
+                head->state = 'E';
+                if(head->next != NULL)
+                    head = head->next;
+                else {
+                    head = NULL;
+                    break;
+                }
+            }
+            else {
+                if(head->next == NULL)
+                    break;/*队列只剩一个元素，继续循环*/
+                else {
+                    if(head->priority_number < head->next->priority_number) {/*队列还有多个元素，且队首优先级小于队列第二个的优先级，将队首元素插入队列*/
+                        process = head ;
+                        temp = head->next;
+                        head = head->next;
+                        if(temp->next == NULL) {
+                            process->next = NULL;
+                            temp->next = process;
+                        }
+                        else {
+                            while(process->priority_number < temp->next->priority_number) {
+                                temp = temp->next;
+                                if(temp->next == NULL)
+                                    break;
+                            }
+                            if(temp->next == NULL) {
+                                process->next = NULL;
+                                temp->next = process;
+                            }
+                            else {
+                                process->next = temp->next;
+                                temp->next = process;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+int main() {
+    initialise();
+    run();
+    system("pause");
+    return 0;
+}
