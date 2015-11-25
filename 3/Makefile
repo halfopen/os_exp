@@ -3,12 +3,12 @@ CC=g++
 	echo rebuilding $*.o from $*.c
 	$(CC) -ggdb -c $<
 
-all: disc
+all: bitmap
 
-disc: disc.o main.o
-	$(CC) -o ./disc $^
+bitmap: bitmap.o main.o
+	$(CC) -o ./bitmap $^
 
-disc.o: disc.cpp disc.h
+bitmap.o: bitmap.cpp bitmap.h
 main.o: main.cpp
 clean:
-	rm -f *.o disc
+	rm -f *.o bitmap
