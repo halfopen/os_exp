@@ -1,9 +1,9 @@
 /*************************************************************************
 	> File Name: main.cpp
-	> Brief: 首次适应算法主源程序
+	> Brief: 用位示图管理磁盘源程序
 	> Author: 计科三班秦贤康
 	> Mail:qinxiankang@gmail.com 
-	> Created Time: 2015年11月24日 星期二 17时59分54秒
+	> Created Time: 2015年11月25日 星期三 17时59分54秒
  ************************************************************************/
 #include"mem.h"
 #include<iostream>
@@ -17,7 +17,11 @@ int main(void)
 	Task::setSize(MemSize);							//初始化内存大小
 	Task::showMem();
 	int choose,t;
-	while(cout<<"------------------------------\n\t1:申请作业内存\n\t2:回收作业\n\t0:退出\n请输入: "<<endl,cin>>choose)
+	while(cout<<"------------------------------\n"
+				<<"\t1:申请作业内存\n"
+				<<"\t2:回收作业\n"
+				<<"\t0:退出\n请输入: "<<endl,
+		cin>>choose)
 	{	switch(choose)
 		{	case 1:
 			{	cout<<"输入作业大小:";
@@ -37,4 +41,3 @@ int main(void)
 	}/*endof while*/
 	return 0;
 }
-

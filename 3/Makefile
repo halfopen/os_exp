@@ -5,10 +5,9 @@ CC=g++
 
 all: bitmap
 
-bitmap: bitmap.o main.o
+bitmap:  main.o
 	$(CC) -o ./bitmap $^
 
-bitmap.o: bitmap.cpp bitmap.h
 main.o: main.cpp
 clean:
 	rm -f *.o bitmap
