@@ -13,9 +13,23 @@ using namespace std;
 const int SIZE = 8;
 int bitmap[SIZE][SIZE];
 
+/**
+* @brief 显示位示图
+*/
 void disp_bitmap();
+/**
+* @brief 申请分配空间
+*/
 void call();
+/**
+* @brief 回收磁盘空间
+*/
 void call_back();
+/**
+* @brief 主函数
+*
+* @return 
+*/
 int main(void)
 {	int choose;
 	disp_bitmap();

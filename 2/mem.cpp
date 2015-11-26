@@ -63,7 +63,7 @@ Task::Task(int t_size):task_size(t_size)			//只指定分配大小
 */
 void Task::showMem()
 {
-	printf("   0|----------\n");
+	printf("\n   0|----------\n");
 	list <Task*>::iterator plist;
 	int temp_pos=0,pos=0;							//temp_pos保存上一个作业的结束位置,pos保存下一个作业的起始位置
 	

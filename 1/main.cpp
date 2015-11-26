@@ -29,10 +29,15 @@ list<PCB*> PCB::pcb_list;
 int main(void) 
 {
 	int num, tn,pri;
+	//cout<<"请输入任务数:";
 	cin>>num;
 	PCB* pcb[num];
 	while(num--)
-	{	cin>>tn>>pri;
+	{	//cout<<"\n任务"<<num+1<<endl;
+		//cout<<"请输入所需运行时间:"<<endl;	
+		cin>>tn;
+		//cout<<"请输入优先级:"<<endl;
+		cin>>pri;
 		pcb[num] = new PCB(tn,pri);
 	}
 	PCB::run();
