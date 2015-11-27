@@ -59,7 +59,9 @@ void call_back()
 	printf("物理记录号:");   
 	scanf("%d",&sector);   
 	if(bitmap[cylinder][4*track+sector]==0)   
-	{ printf("此块为未分配块！回收出错！\n");    }  
+	{   
+		printf("此块为未分配块！回收出错！\n");    
+	}  
 	else   
 	{  
 		bitmap[cylinder][4*track+sector]=0;   
