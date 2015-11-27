@@ -4,25 +4,12 @@
 https://github.com/halfopen/os_exp
 
 .系统环境:
-                                       halfopen@h-pc
- MMMMMMMMMMMMMMMMMMMMMMMMMmds+.        OS: mint Mint 17.2 rafaela
- MMm----::-://////////////oymNMd+`     Kernel: x86_64 Linux 3.16.0-38-generic
- MMd      /++                -sNMd:    Uptime: 2h 27m
- MMNso/`  dMM    `.::-. .-::.` .hMN:   Packages: 2970
- ddddMMh  dMM   :hNMNMNhNMNMNh: `NMm   Shell: bash 4.3.11
-     NMm  dMM  .NMN/-+MMM+-/NMN` dMM   Resolution: 1366x768
-     NMm  dMM  -MMm  `MMM   dMM. dMM   DE: XFCE4
-     NMm  dMM  -MMm  `MMM   dMM. dMM   WM: Xfwm4
-     NMm  dMM  .mmd  `mmm   yMM. dMM   WM Theme: Mint-X
-     NMm  dMM`  ..`   ...   ydm. dMM   GTK Theme: Ceti [GTK2]
-     hMM- +MMd/-------...-:sdds  dMM   Icon Theme: Mint-X-Teal
-     -NMm- :hNMNNNmdddddddddy/`  dMM   Font: Noto Sans 8
-      -dMNs-``-::::-------.``    dMM   CPU: AMD A8-4500M APU with Radeon HD Graphics @ 1.9GHz
-       `/dMNmy+/:-------------:/yMMM   GPU: Gallium 0.4 on AMD ARUBA
-          ./ydNMMMMMMMMMMMMMMMMMMMMM   RAM: 1103MiB / 3337MiB
-             \.MMMMMMMMMMMMMMMMMMM    
-                                      
-
+ halfopen@h-pc
+OS: mint Mint 17.2 rafaela
+Kernel: x86_64 Linux 3.16.0-38-generic
+CPU: AMD A8-4500M APU with Radeon HD Graphics @ 1.9GHz
+GPU: Gallium 0.4 on AMD ARUBA
+RAM: 1522MiB / 3337MiB
 
 
 
@@ -74,12 +61,12 @@ https://github.com/halfopen/os_exp
 │       └── 3磁盘存储空间的分配和回收.doc
 ├── old
 │   ├── disc
-│   ├── disc.cpp
+│   ├── disc.cpp 
 │   ├── mem
-│   ├── mem.cpp
+│   ├── mem.cpp 
 │   ├── pcb
 │   └── pcb.txt
-├── README.md
+├── README.md 
 .
 ├── 1处理器调度
 │   ├── main.cpp
