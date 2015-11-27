@@ -6,7 +6,8 @@
 #include <string>
 #include <list>
 using namespace std;
-#define DEBUG 1
+//#define DEBUG 1
+#define MIN -32767									//标记运行结束的任务的优先级
 /**
 * @brief 构造函数
 *
@@ -29,28 +30,38 @@ PCB::PCB(int tn, int pri)
 * @return 
 */
 bool PCB::compare_pcb(const PCB* f, const PCB* s)	  
-{	return f->priority_number > s->priority_number; //以优先级进行调度
+{	//if(f->time_needed<=0)return false;
+	//if(s->time_needed<=0)return true;	
+	return f->priority_number > s->priority_number; //以优先级进行调度
 }
 /**
 * @brief 运行当前进程
 */
-void PCB::prun()
-{	this->priority_number--;
+bool PCB::prun()
+{	if(this->time_needed <=0 || this->state == 'E'){
+		size--;
+		this->state='E';
+		this->priority_number = MIN;
+		return false;
+	}	
+	this->priority_number--;
 	this->time_needed--;
+	
 	if(this->time_needed<=0)						//当一个进程运行完毕			
 	{	this->state = 'E';							//更改状态为E
-		size--;										//队列中进程数减一
+		//size--;									//队列中进程数减一
 	}
+	return true;
 }
 /**
 * @brief 运行进程队列
 */
 void PCB::run()
 {	disp_list();									//显示初始化队列
+	int i=0;
 	while(size >0)									//当队列不为空（不用实际删除list中数据，因为还要显示）
 	{	
-		#ifndef DEBUG
-		#else
+		#ifdef DEBUG
 		getchar();
 		#endif
 		pcb_list.sort(PCB::compare_pcb);			//按优先级进行排序
@@ -58,9 +69,9 @@ void PCB::run()
 		PCB * pcb;									//获取首进程
 		pcb = *pcb_list.begin();
 
-		pcb->prun();								//运行优先级最高的进程
-		cout<<"size:"<<size
-			<<" run:Q"<<pcb->name<<endl;			//输出当前进程数，当前运行进程
+		if(!pcb->prun())continue;					//如果该进程无效，跳过
+		cout<<"task_num:"<<size
+			<<" run:Q"<<pcb->name<<" step:"<<++i<<endl;			//输出当前进程数，当前运行进程
 		disp_list();
 	}
 	
@@ -76,7 +87,7 @@ void PCB::disp_list()
 	for(plist = pcb_list.begin(); plist != pcb_list.end(); plist++)
 	{	PCB * pcb;
 		pcb = *plist;
-		printf("|Q%d\t\t%2d\t\t %2d\t\t %c\n",pcb->name,pcb->time_needed,pcb->priority_number,pcb->state);
+		printf("|Q%d\t\t%2d\t\t %2d\t\t %c\n",pcb->name,pcb->time_needed,(pcb->time_needed<=0?0:pcb->priority_number),pcb->state);
 	}
 	cout<<endl;
 }

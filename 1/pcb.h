@@ -30,7 +30,7 @@ public:
     
     void disp();									//显示当前进程信息
 	static void run(); 								//运行进程队列
-	void prun();									//运行当前进程
+	bool prun();									//运行当前进程
 	static bool compare_pcb(const PCB* f, 
 			const PCB* s);							//优先级比较函数
 	static void disp_list();						//显示所有队列信息
