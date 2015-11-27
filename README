@@ -3,7 +3,7 @@
 
 https://github.com/halfopen/os_exp
 
-.系统环境:
+系统环境:
  halfopen@h-pc
 OS: mint Mint 17.2 rafaela
 Kernel: x86_64 Linux 3.16.0-38-generic
@@ -121,7 +121,7 @@ RAM: 1522MiB / 3337MiB
 │   ├── mem.cpp
 │   ├── pcb
 │   └── pcb.txt
-├── README.md				
+├── README		
 └── screenshot
     	├── 1
     │   ├── test1_1.png
