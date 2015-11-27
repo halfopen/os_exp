@@ -122,7 +122,7 @@ RAM: 1522MiB / 3337MiB
 │   ├── pcb
 │   └── pcb.txt
 ├── README		
- └── screenshot
+└── screenshot
     ├── 1
     │   ├── test1_1.png
     │   └── test1_2.png
