@@ -17,7 +17,7 @@ using namespace std;
 //#define DEBUG 1									//测试输出标记
 #define INFO 1										//提示信息输出标记
 class Task{
-public:
+private:
 	int start;										//起始位置
 	int task_size;									//作业内存大小
 	int end;										//结束位置

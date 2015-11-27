@@ -18,7 +18,7 @@
 using namespace std;
 
 class PCB{
-private:
+public:
 	int name;										//进程id
 	int time_needed;								//需要运行时间
 	char state;										//进程状态
