@@ -122,21 +122,20 @@ RAM: 1522MiB / 3337MiB
 │   ├── pcb
 │   └── pcb.txt
 ├── README		
-└── screenshot
-    	├── 1
+ └── screenshot
+    ├── 1
     │   ├── test1_1.png
     │   └── test1_2.png
-    	├── 2
+    ├── 2
     │   ├── test1_1.png
     │   ├── test1_2.png
     │   ├── test1_3.png
     │   ├── test1_4.png
     │   └── test1_5.png
-   	└── 3
+    └── 3
         ├── test1_1.png
         ├── test1_2.png
         └── test1_3.png
 
 11 directories, 57 files
-
 
