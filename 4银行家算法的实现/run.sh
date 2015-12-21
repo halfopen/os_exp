@@ -1,3 +1,3 @@
-#!/bin/bashi
+#!/bin/bash
 javac Bank.java
 java Bank 
